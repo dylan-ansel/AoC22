@@ -14,7 +14,7 @@ LOSSPOINTS = 0
 # Draw   Y   2
 # Win    Z   3
 
-wldtable = [
+WLDTABLE = [
 [1,1,2],        # [them, us, outcome]
 [1,2,3],
 [1,3,1],
@@ -39,7 +39,7 @@ def p2():
     for round in INPUT.split('\n'):
         them = handvalue(round.split(' ')[0])
         outcome = handvalue(round.split(' ')[1])    # expected outcome
-        for k in wldtable:
+        for k in WLDTABLE:
             if k[0] == them and k[2] == outcome:
                 us = k[1]
         score += playhand(them, us)
@@ -53,7 +53,7 @@ def handvalue(alphain):
     else:
         return 3
 
-def playhand(them, us):                         # TODO actually use wldtable for this
+def playhand(them, us):                         # TODO actually use WLDTABLE for this
     score = 0
     score += us                                 # add the flat value of your played hand
     if them == us:                              # draw condition
