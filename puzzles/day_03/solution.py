@@ -17,17 +17,14 @@ def p1():
 
 def p2():
     total = 0
-    rucksack_list = []
-    
+    list_of_rucksacks = []
     for rucksack in INPUT.split('\n'):
-        rucksack_list.append(rucksack)
-
-    for sack_number in range(0, len(rucksack_list), GROUP_SIZE):
-        for char in rucksack_list[sack_number]:
-            if char in rucksack_list[sack_number + 1] and char in rucksack_list[sack_number + 2]:
+        list_of_rucksacks.append(rucksack)
+    for sack_number in range(0, len(list_of_rucksacks), GROUP_SIZE):
+        for char in list_of_rucksacks[sack_number]:
+            if char in list_of_rucksacks[sack_number + 1] and char in list_of_rucksacks[sack_number + 2]:
                 total += HARDCODELOL.index(char) + 1
                 break
-                    
     return total
 
 print(f"The sum of priorities is {p1()}.")
