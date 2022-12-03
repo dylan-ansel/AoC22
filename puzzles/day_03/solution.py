@@ -17,9 +17,7 @@ def p1():
 
 def p2():
     total = 0
-    list_of_rucksacks = []
-    for rucksack in INPUT.split('\n'):
-        list_of_rucksacks.append(rucksack)
+    list_of_rucksacks = INPUT.split('\n')
     for sack_number in range(0, len(list_of_rucksacks), GROUP_SIZE):
         for char in list_of_rucksacks[sack_number]:
             if char in list_of_rucksacks[sack_number + 1] and char in list_of_rucksacks[sack_number + 2]:
