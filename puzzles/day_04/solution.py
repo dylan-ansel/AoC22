@@ -11,6 +11,7 @@ def p1():
             count += 1
         elif pair[0][0] >= pair[1][0] and pair[0][1] <= pair[1][1]:
             count += 1
+
     return count
 
 
@@ -34,6 +35,7 @@ def parse(raw):
         first = [int(item) for item in line.split(",")[0].split("-")]
         second = [int(item) for item in line.split(",")[1].split("-")]
         assignments.append([first, second])
+
     return assignments
 
 
