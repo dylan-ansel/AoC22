@@ -10,7 +10,7 @@ def p1():
 
 
 def p2():
-    #14 unique characters
+    # 14 unique characters
     answer = detect_marker(INPUT, 14)
 
     return answer
