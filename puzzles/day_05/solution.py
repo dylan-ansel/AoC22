@@ -56,6 +56,7 @@ def p2():
 
 
 def build_crate():
+    # we're using spaces instead of null because they're easier to debug in a monospaced environment. deal.
     crat = []                                       # init crate
     flipped = RAW_CRATE.split('\n')[:-1]
     flipped.reverse()                               # flip the row order
@@ -66,12 +67,12 @@ def build_crate():
         crat.append([])                             # create row so we can append to it later
         for idx in range(maxwidth):
             if idx % 4 == 1:                        # only concern ourselves with indices that could contain letters
-                if idx > len(line):                 # if the line is shorter than the max width, pad with null
+                if idx > len(line):                 # if the line is shorter than the max width, pad with space
                     crat[row].append(" ")
                 elif line[idx].isalpha():
                     crat[row].append(line[idx])     # if letter, append letter
                 else:
-                    crat[row].append(" ")           # else, append null
+                    crat[row].append(" ")           # else, append with space
 
     return crat
 
