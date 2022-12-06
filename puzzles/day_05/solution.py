@@ -15,9 +15,8 @@ def p1(crat, inst):
         for movement in range(move_count):
             letter = \
                 find_top_letter_in_stack(crat, move_from)[2]
-            previous_home = [
-                find_top_letter_in_stack(crat, move_from)[0],
-                find_top_letter_in_stack(crat, move_from)[1]]
+            previous_home = \
+                find_top_letter_in_stack(crat, move_from)
             new_home = \
                 find_first_available_space_in_stack(crat, move_to)
 
