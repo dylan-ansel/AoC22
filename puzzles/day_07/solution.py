@@ -91,6 +91,4 @@ def p2():
 if __name__ == '__main__':
     FILEFOLDER = parser()
     FOLDER_SIZES = sizemaker()
-    print(p1())
-
-    # print(f'p1: {p1(folder)}, p2: {p2()}')
+    print(f'p1: {p1()}, p2: {p2()}')
