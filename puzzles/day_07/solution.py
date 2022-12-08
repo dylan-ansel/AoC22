@@ -84,7 +84,17 @@ def p1():
 
 
 def p2():
-    pass
+    # 30000000
+    # 24933642
+    current = FILEFOLDER[0].foldersize  #
+    hdd = 70000000
+    need = 30000000
+    minimum = hdd
+    eggs = need - (hdd - current)
+    for folder in FOLDER_SIZES:
+        if eggs <= folder < minimum:
+            minimum = folder
+    return minimum
 
 
 if __name__ == '__main__':
