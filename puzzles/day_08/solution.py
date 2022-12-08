@@ -3,16 +3,6 @@ import math
 with open('input.txt', 'r') as f:
     INPUT = f.read()
 
-GRID = [[int(char) for char in line] for line in INPUT.split('\n')]
-W, H = len(GRID[0]), len(GRID)  # assume rectangle
-
-
-def create_bool_grid():
-    # yea yea it's bin not bool. python. if y ou don;t pike it suck my dicxk
-    boolgrid = [[0 for i in range(W)] for j in range(H)]
-
-    return boolgrid
-
 
 def print_grids():
     """prints the input grid and the boolean grid side-by-side in a somewhat readable format"""
@@ -81,7 +71,7 @@ def p2():
                 if rowitem >= item:
                     scenic[0] = j-k
             for k, rowitem in enumerate(get_row(i)):            # look right
-                # second condition because otherwise the post-slices indices would be unusable
+                # second condition because otherwise the post-slice indices would be unusable
                 if rowitem >= item and k > j:
                     scenic[1] = k-j
                     break
@@ -100,6 +90,9 @@ def p2():
 
 
 if __name__ == '__main__':
-    BOOLGRID = create_bool_grid()
+    GRID = [[int(char) for char in line] for line in INPUT.split('\n')]
+    W, H = len(GRID[0]), len(GRID)  # assume rectangle
+    BOOLGRID = [[0 for i in range(W)] for j in range(H)]
+
     # print_grids()
     print(f'p1: {p1()}, p2: {p2()}')
