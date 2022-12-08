@@ -24,6 +24,8 @@ def parser():
                 if cwd: cwd = cwd.parent
             elif nam == '/':
                 list_of_dirs.append(FileOrFolder(size=0, extension='', parent=None, name=nam))
+                cwd = [directory for directory in list_of_dirs
+                       if directory.name == nam and directory.parent == cwd][0]
             else:
                 # assumes 'dir x' will always be called before '$ cd x'
                 # assumes two directories in the same parent folder cannot have identical names
