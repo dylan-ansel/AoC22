@@ -7,13 +7,9 @@ LINES = INPUT.split('\n')
 
 
 class FileOrFolder:
-    instances = []
-
     def __init__(self, size=0, extension='', parent=None, name=''):
         self.size = size
         self.extension = extension
-        self.__class__.instances.append(self)
-        self.is_file = True if size > 0 else False
         self.parent = parent
         self.name = name
         self.foldersize = 0
@@ -32,18 +28,20 @@ def parser():
                 list_of_dirs.append(FileOrFolder(size=0, extension='', parent=None, name=nam))
             else:
                 # assumes 'dir x' will always be called before '$ cd x'
-                cwd = [directory for directory in FileOrFolder.instances
+                # assumes two directories in the same parent folder cannot have identical names
+                cwd = [directory for directory in list_of_dirs
                        if directory.name == nam and directory.parent == cwd][0]
         elif line[:4] == '$ ls':
             # i don't think we need to do anything here
             pass
         elif line[:3] == 'dir':
             # dirs
-            list_of_dirs.append(FileOrFolder(size=0, extension='', parent=cwd, name=(line[4:])))
+            nam = line[4:]
+            list_of_dirs.append(FileOrFolder(size=0, extension='', parent=cwd, name=nam))
         else:
             # files
-            siz = int(line.split(' ')[0])
             nam = line.split(' ')[1].split('.')[0]
+            siz = int(line.split(' ')[0])
             ext = ''
             if '.' in line:
                 ext = line.split(' ')[1].split('.')[1]
@@ -71,7 +69,8 @@ def sizemaker():
     #     print(f'file: {file.name}, size: {file.size}, foldersize: {file.foldersize}')
 
     folder_sizes = [folder.foldersize for folder in FILEFOLDER if folder.foldersize > 0]
-    print(folder_sizes)
+    # PRINT DEBUG
+    # print(folder_sizes)
     return folder_sizes
 
 
