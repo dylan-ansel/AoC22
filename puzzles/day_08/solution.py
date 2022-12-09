@@ -14,15 +14,11 @@ def print_grids():
 
 
 def get_column(colnum):
-    column = [letter[colnum] for letter in GRID]
-
-    return column
+    return [letter[colnum] for letter in GRID]
 
 
 def get_row(rownum):
-    row = GRID[rownum]
-
-    return row
+    return GRID[rownum]
 
 
 def p1():
