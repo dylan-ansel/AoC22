@@ -55,7 +55,7 @@ def move_straight():
 
 
 def move_diagonally():
-    # define directions (-1 or 1) for each axis
+    # define direction (-1 or 1) for each axis
     x = 1 if H[0] > T[0] else -1
     y = 1 if H[1] > T[1] else -1
 
