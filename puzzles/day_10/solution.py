@@ -5,24 +5,41 @@ INSTR = [line.split(' ') for line in INPUT.split('\n')]
 
 
 class CPU:
-    def __init__(self, relevant_cycles):
+    def __init__(self, width, relevant_cycles=[]):
+        self.width = width
         self.cycle = 0
         self.x = 1
         self.relevant_cycles = relevant_cycles
         self.signal_strength = 0
         self.all_relevant_strengths = []
+        self.screen = ""
 
     @property
     def sum_of_relevant_strengths(self):
         return sum(self.all_relevant_strengths)
+
+    @property
+    def sprite(self):
+        return range(self.x-1, self.x + 2)
 
     def check_relevant_cycles(self):
         if self.cycle in self.relevant_cycles:
             self.signal_strength = self.x * self.cycle
             self.all_relevant_strengths.append(self.signal_strength)
 
+    def draw_screen(self):
+        if self.cycle % self.width in self.sprite:
+            self.screen += "#"
+        else:
+            self.screen += "."
+        if self.cycle % self.width == 39: self.screen += "\n"
+
+    def print_screen(self):
+        print(self.screen)
+
     def add_to_cycle(self, value):
         for i in range(value):
+            self.draw_screen()
             self.cycle += 1
             self.check_relevant_cycles()
 
@@ -34,9 +51,10 @@ class CPU:
         self.x += value
 
 
-def p1():
+def create_cpu():
+    width = 40
     relevant = [20, 60, 100, 140, 180, 220]
-    cpu = CPU(relevant)
+    cpu = CPU(width, relevant)
 
     for line in INSTR:
         instruction = line[0]
@@ -45,12 +63,19 @@ def p1():
         elif instruction == 'addx':
             amount = int(line[1])
             cpu.execute_addx(amount)
+
+    return cpu
+
+
+def p1():
+    cpu = create_cpu()
     return cpu.sum_of_relevant_strengths
 
 
 def p2():
-    pass
+    cpu = create_cpu()
+    return cpu.screen
 
 
 if __name__ == '__main__':
-    print(f'p1: {p1()}, p2: {p2()}')
+    print(f'p1: {p1()}, p2: \n\n{p2()}')
