@@ -32,7 +32,7 @@ class CPU:
             self.screen += "#"
         else:
             self.screen += "."
-        if self.cycle % self.width == 39:
+        if self.cycle % self.width == self.width - 1:
             self.screen += "\n"
 
     def print_screen(self):
@@ -52,9 +52,7 @@ class CPU:
         self.x += value
 
 
-def create_cpu():
-    width = 40
-    relevant = [20, 60, 100, 140, 180, 220]
+def create_cpu(width, relevant=[]):
     cpu = CPU(width, relevant)
 
     for line in INSTR:
@@ -69,12 +67,13 @@ def create_cpu():
 
 
 def p1():
-    cpu = create_cpu()
+    relevant = [20, 60, 100, 140, 180, 220]
+    cpu = create_cpu(40, relevant)
     return cpu.sum_of_relevant_strengths
 
 
 def p2():
-    cpu = create_cpu()
+    cpu = create_cpu(40)
     return cpu.screen
 
 
