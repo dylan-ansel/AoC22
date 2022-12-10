@@ -20,7 +20,7 @@ class CPU:
 
     @property
     def sprite(self):
-        return range(self.x-1, self.x + 2)
+        return range(self.x - 1, self.x + 2)
 
     def check_relevant_cycles(self):
         if self.cycle in self.relevant_cycles:
@@ -32,7 +32,8 @@ class CPU:
             self.screen += "#"
         else:
             self.screen += "."
-        if self.cycle % self.width == 39: self.screen += "\n"
+        if self.cycle % self.width == 39:
+            self.screen += "\n"
 
     def print_screen(self):
         print(self.screen)
