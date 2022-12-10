@@ -20,7 +20,7 @@ class CPU:
 
     @property
     def sprite(self):
-        return range(self.x - 1, self.x + 2)
+        return range(self.x - 1, self.x + 2)   # i might consider putting the modulo here for readability
 
     def check_relevant_cycles(self):
         if self.cycle in self.relevant_cycles:
