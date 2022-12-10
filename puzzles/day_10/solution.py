@@ -52,8 +52,8 @@ class CPU:
         self.x += value
 
 
-def create_cpu(width, relevant=[]):
-    cpu = CPU(width, relevant)
+def create_cpu(width, relevant_cycles=[]):
+    cpu = CPU(width, relevant_cycles)
 
     for line in INSTR:
         instruction = line[0]
@@ -67,8 +67,8 @@ def create_cpu(width, relevant=[]):
 
 
 def p1():
-    relevant = [20, 60, 100, 140, 180, 220]
-    cpu = create_cpu(40, relevant)
+    relevant_cycles = [20, 60, 100, 140, 180, 220]
+    cpu = create_cpu(40, relevant_cycles)
     return cpu.sum_of_relevant_strengths
 
 
